@@ -1,0 +1,29 @@
+FORMAT: 1A
+HOST: http://polls.apiblueprint.org/
+
+# CloudGo
+Clouding CSGO configuration file (WIP).
+
+### List All Configs [GET]
+Show every configs
+
++ Response 200 (application/json)
+
+        [
+            {
+                "name": "Favourite programming language?",
+                "published_at": "2015-08-05T08:40:51.620Z",
+                "file": "a11b22c33"
+            }
+        ]
+        
+### Retrieve a config [/config/{config_id}]
+Returns a specific config using id.
+
++ Response 200
+
+### Create a config [POST]
+This is used to upload a configuration file
+
++ Request Update Plain Text Message (text/plain)
++ Response 201
