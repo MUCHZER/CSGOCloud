@@ -4,26 +4,104 @@ HOST: http://polls.apiblueprint.org/
 # CloudGo
 Clouding CSGO configuration file (WIP).
 
+
+# CloudGo API Root [/]
+
+
+## Configs Collection [/configs]
+
 ### List All Configs [GET]
 Show every configs
 
+
++ Request
+    + Headers
+
+            Authorization: Basic ABC123
+            
 + Response 200 (application/json)
 
         [
             {
-                "name": "Favourite programming language?",
+                "id": "1ezr5ezer1z",
+                "owner": "1za1eaezaddd",
+                "name": "My config lol",
                 "published_at": "2015-08-05T08:40:51.620Z",
                 "file": "a11b22c33"
+            },
+            {
+                "id": "45za4e1fe",
+                "owner": "azeeza41fe",
+                "name": "Top fr config",
+                "published_at": "2015-08-05T08:40:51.620Z",
+                "file": "55e1gf1e"
             }
         ]
         
-### Retrieve a config [/config/{config_id}]
-Returns a specific config using id.
-
-+ Response 200
 
 ### Create a config [POST]
-This is used to upload a configuration file
+This is used to upload a configuration file.
 
-+ Request Update Plain Text Message (text/plain)
-+ Response 201
++ Request (multipart/form-data)
+    + Headers
+
+            Authorization: Basic ABC123
+            
++ Response 201 (application/json)
+
+    + Headers
+        
+            Location: /configs/111
+        
+    + Body
+    
+            [
+                { "message": "success" }
+            ]
+    
+
+### Retrieve a config [GET /configs/{config_id}]
+Returns a specific config using id.
+
++ Request
+    + Headers
+
+            Authorization: Basic ABC123
+            
++ Response 200 (application/json)
+
+        [
+            {
+                "id": "45za4e1fe",
+                "owner": "azeeza41fe",
+                "name": "Top fr config",
+                "published_at": "2015-08-05T08:40:51.620Z",
+                "file": "55e1gf1e"
+            }
+        ]
+        
+        
+### Delete Config [DELETE /configs/{config_id}]
+Used to delete specific config
+
++ Request
+    + Headers
+
+            Authorization: Basic ABC123
+            
++ Parameters
+    + config_id (string)
+
++ Response 204
+
+## Download collection [/download]
+        
+### Download a configs [GET /download/{config_id}]
+This is used to download specific config
+
++ Request
+    + Headers
+
+            Authorization: Basic ABC123
+            
++ Response 200 (text/plain)
